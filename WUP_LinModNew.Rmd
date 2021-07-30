@@ -168,6 +168,9 @@ summary.lm(model.3)
 The residual standard error is the variation in all parts. 
 The bigger the Adjusted R square the better the model. The multiple R-squared is always a little bit Bigger than the Adjusted R-squared. The bigger the Adjusted R-square the more you reduce the error. 
 
+The models must be nested. That means all the independent variables in one model are also in the other models
+Model 2 is nested in model 3. Model 1 is nested in model 3. Model 1 and 2 are not nested because GRIP is not nested in ARM.
+
 #### predict model.3 at target point
   
 ```{r}
@@ -202,4 +205,13 @@ Model 2 is nested in model 3. The components in model 2 are also in model 3.
 
 
 ## Informally compare Model.1 with model.2
+
+```{r}
+anova(model.1,model.2)
+```
+
+0.467 is the adjusted R-squared for SIMS-ARM
+
+0.4053 is the adjusted R-squared for SIMS-GRIP
+How much the models are able to guess the average. 
 
