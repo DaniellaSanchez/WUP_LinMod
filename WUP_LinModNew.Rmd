@@ -1,7 +1,7 @@
 ---
 title: "linear model from Web"
-author: "Your Name"
-date: "Put semester and year"
+author: "Daniella Sanchez"
+date: "Summer 2021"
 output:
    html_document:
          toc: true
@@ -35,10 +35,36 @@ data <- read.csv(file="https://onlinestatbook.com/case_studies_rvls/physical_str
 
 ### scatterplot
 
+```{r}
+basicNN <- ggplot(data,aes(y=SIMS,x=ARM))
+```
+
+```{r}
+basicNN + geom_point()
+```
+
+The y-axis is SIMS and the x-axis is ARMS. This plot shows that here is a positive linear correlation. There is a positive correlation between ARM and SIMS displayed in this plot above. 
+
 ### Numerical results
 
+```{r}
+cor(SIMS~ARM,data=data)
+```
+
+The value is 0.68, which is a positive number that indicates the line will travel upwards towards the right. 
 
 ### Inferential  (Build model.1)
+
+```{r}
+model.1 <- lm(SIMS~ARM,data=data)
+summary.lm(model.1)
+```
+
+1.226 if you go up or down that is the prediction interval. 
+
+In this linear regression model, the numbers that should be considered to create the predication equation are the estimate coefficients. To predict SITS based on ARM strength, the intercept, -4.1 would be added to 0.5, ARM and then multiplied by ARM.  The evaluation for the line that fits this is SIMS is equal to -4.1 + .05 *ARM. The formula needed is y= mx  + b to create the line. The bigger the adjusted R-squared, the better the model. The degree of freedom will be taken away from the Multiple-R Square and then what would be left is the Adjusted R-squared. The 145 degree of freedom is how many data points are displayed in the plot. The line is to be estimate where it hits the y-axis. Each data will change the degree of freedom. 
+
+The 145 degree of freedom is how many data points are displayed in the plot. The line is to be estimated where it hits the y-axis. Each data will change the degree of freedom. Every time you add more stuff to the model, the multiply r-squared will go down a small percentage. 
 
 #### Predict at target point
 
